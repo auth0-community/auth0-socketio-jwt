@@ -22,7 +22,7 @@
   },
   "license": "MIT",
   "dependencies": {
-    "jsonwebtoken": "~4.2.0",
+    "jsonwebtoken": "~5.0.0",
     "xtend": "~2.1.2"
   },
   "devDependencies": {
