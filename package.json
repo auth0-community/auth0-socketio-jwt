@@ -8,11 +8,7 @@
     "socket.io",
     "jwt"
   ],
-  "author": {
-    "name": "José F. Romaniello",
-    "email": "jfromaniello@gmail.com",
-    "url": "http://joseoncode.com"
-  },
+  "author": "Auth0",
   "repository": {
     "type": "git",
     "url": "https://github.com/auth0/socketio-jwt.git"
