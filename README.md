@@ -72,6 +72,19 @@ io.on('connection', function (socket) {
 })
 ```
 
+If you want to disconnect the socket on authorization failure using this approach, you can pass `fail` parameter as follows: 
+
+``` javascript
+io.use(socketioJwt.authorize({
+  secret: 'your secret or public key',
+  fail: function (err, socket, next) {
+    next(err);
+    socket.disconnect();
+  },
+  handshake: true
+}));
+```
+
 For more validation options see [auth0/jsonwebtoken](https://github.com/auth0/node-jsonwebtoken).
 
 __Client side__:
