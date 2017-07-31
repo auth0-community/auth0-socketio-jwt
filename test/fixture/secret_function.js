@@ -25,7 +25,7 @@ exports.start = function (options, callback) {
 
   options = xtend({
     secret: function(request, decodedToken, callback) {
-      callback(null, SECRETS[decodedToken.id]);
+      callback(null, SECRETS[decodedToken.payload.id]);
     },
     timeout: 1000,
     handshake: true
