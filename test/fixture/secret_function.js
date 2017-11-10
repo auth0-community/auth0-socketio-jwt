@@ -40,7 +40,8 @@ exports.start = function (options, callback) {
       first_name: 'John',
       last_name: 'Doe',
       email: 'john@doe.com',
-      id: req.body.username === 'valid_signature' ? 123 : 555
+      id: req.body.username === 'valid_signature' ? 123 : 555,
+      salesforce_id: req.body.password === 'no_sf_id' ? null : 'salesforceId'
     };
 
     // We are sending the profile inside the token

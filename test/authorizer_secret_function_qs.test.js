@@ -49,6 +49,33 @@ describe('authorizer with secret function', function () {
     });
   });
 
+  describe('when no salesforce_id', function() {
+
+    beforeEach(function (done) {
+      request.post({
+        url: 'http://localhost:9000/login',
+        json: { username: 'valid_signature', password: 'no_sf_id' }
+      }, function (err, resp, body) {
+        this.token = body.token;
+        done();
+      }.bind(this));
+    });
+
+    it('should emit unauthorized', function (done){
+      var socket = io.connect('http://localhost:9000', {
+        'forceNew':true,
+        'query': 'token=' + this.token
+      });
+
+      socket.on('error', function(err){
+        err.message.should.eql("Invalid Token");
+        err.code.should.eql("invalid_token");
+        socket.close();
+        done();
+      });
+    });
+  });
+
   describe('unsigned token', function() {
     beforeEach(function () {
       this.token = 'eyJhbGciOiJub25lIiwiY3R5IjoiSldUIn0.eyJuYW1lIjoiSm9obiBGb28ifQ.';

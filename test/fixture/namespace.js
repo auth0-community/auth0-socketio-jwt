@@ -34,7 +34,8 @@ exports.start = function (callback) {
       first_name: 'John',
       last_name: 'Doe',
       email: 'john@doe.com',
-      id: 123
+      id: 123,
+      salesforce_id: 'salesforceID'
     };
 
     // We are sending the profile inside the token

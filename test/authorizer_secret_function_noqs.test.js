@@ -74,4 +74,31 @@ describe('authorizer with secret function', function () {
     });
   });
 
+  describe('when missing salesforce_id', function() {
+
+    beforeEach(function (done) {
+      request.post({
+        url: 'http://localhost:9000/login',
+        json: { username: 'valid_signature', password: 'no_sf_id' }
+      }, function (err, resp, body) {
+        this.invalidToken = body.token;
+        done();
+      }.bind(this));
+    });
+
+    it('should emit invalid ', function (done){
+      var socket = io.connect('http://localhost:9000', {
+        'forceNew':true,
+      });
+      var invalidToken = this.invalidToken;
+      socket.on('unauthorized', function() {
+        done();
+      });
+
+      socket.on('connect', function(){
+        socket
+          .emit('authenticate', { token: invalidToken })
+      });
+    });
+  });
 });
