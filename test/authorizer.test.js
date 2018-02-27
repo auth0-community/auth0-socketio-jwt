@@ -21,7 +21,6 @@ describe('authorizer', function() {
         done();
       });
     });
-
   });
 
   describe('when the user is logged in', function() {

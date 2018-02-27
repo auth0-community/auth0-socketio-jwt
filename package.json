@@ -1,6 +1,6 @@
 {
   "name": "socketio-jwt",
-  "version": "5.0.0",
+  "version": "5.1.0",
   "description": "authenticate socket.io connections using JWTs",
   "main": "lib/index.js",
   "keywords": [
