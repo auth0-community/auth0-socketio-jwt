@@ -98,6 +98,59 @@ describe('authorizer with secret function', function () {
       socket.on('connect', function(){
         socket
           .emit('authenticate', { token: invalidToken })
+  describe('DR Partner verification', function () {
+    describe('when missing client_id and salesforce_id', function () {
+      beforeEach(function (done) {
+        request.post({
+          url: 'http://localhost:9000/login',
+          json: { username: 'valid_signature', password: 'no_client_id' }
+        }, function (err, resp, body) {
+          this.invalidToken = body.token;
+          done();
+        }.bind(this));
+      });
+
+      it('should emit invalid ', function (done) {
+        var socket       = io.connect('http://localhost:9000', {
+          'forceNew': true
+        });
+        var invalidToken = this.invalidToken;
+        socket.on('unauthorized', function () {
+          done();
+        });
+
+        socket.on('connect', function () {
+          socket
+            .emit('authenticate', { token: invalidToken });
+        });
+      });
+    });
+
+    describe('when token has client_id', function () {
+      beforeEach(function (done) {
+        request.post({
+          url: 'http://localhost:9000/login',
+          json: { username: 'valid_signature', password: 'client_id' }
+        }, function (err, resp, body) {
+          this.token = body.token;
+          done();
+        }.bind(this));
+      });
+
+      it('handshake and connect with client_id and no salesforce_id ', function (done) {
+        var socket = io.connect('http://localhost:9000', {
+          'forceNew': true
+        });
+        var token  = this.token;
+        socket.on('connect', function () {
+          socket.on('echo-response', function () {
+            socket.close();
+            done();
+          }).on('authenticated', function () {
+            socket.emit('echo');
+          })
+            .emit('authenticate', { token: token });
+        });
       });
     });
   });

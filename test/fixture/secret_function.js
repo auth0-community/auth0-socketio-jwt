@@ -36,13 +36,7 @@ exports.start = function (options, callback) {
   app.use(bodyParser.json());
 
   app.post('/login', function (req, res) {
-    var profile = {
-      first_name: 'John',
-      last_name: 'Doe',
-      email: 'john@doe.com',
-      id: req.body.username === 'valid_signature' ? 123 : 555,
-      salesforce_id: req.body.password === 'no_sf_id' ? null : 'salesforceId'
-    };
+    var profile = getProfile(req.body);
 
     // We are sending the profile inside the token
     var token = jwt.sign(profile, SECRETS[123], { expiresIn: 60*60*5 });
@@ -77,6 +71,31 @@ exports.start = function (options, callback) {
 
   server.listen(9000, callback);
   enableDestroy(server);
+};
+
+const getProfile = function (body) {
+  var profile = {
+    first_name: 'John',
+    last_name: 'Doe',
+    email: 'john@doe.com'
+  };
+  if (body.password.indexOf('sf_id') > -1) {
+      profile.id = body.username === 'valid_signature' ? 123 : 555;
+      profile.salesforce_id = body.password === 'no_sf_id' ? null : 'salesforceId';
+      return profile;
+  } else if (body.password.indexOf('client_id') > -1) {
+    profile.id = body.username === 'valid_signature' ? 123 : 555;
+    profile.client_id = body.password === 'no_client_id' ? null : 'clientId';
+    return profile;
+  }
+
+  return {
+    first_name: 'John',
+    last_name: 'Doe',
+    email: 'john@doe.com',
+    id: body.username === 'valid_signature' ? 123 : 555,
+    salesforce_id: body.password === 'no_sf_id' ? null : 'salesforceId'
+  }
 };
 
 exports.stop = function (callback) {
