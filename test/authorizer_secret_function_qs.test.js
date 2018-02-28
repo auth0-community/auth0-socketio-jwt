@@ -21,7 +21,6 @@ describe('authorizer with secret function', function () {
         done();
       });
     });
-
   });
 
   describe('when the user is logged in', function() {
@@ -44,81 +43,6 @@ describe('authorizer with secret function', function () {
         socket.close();
         done();
       }).on('error', done);
-    });
-  });
-
-  describe('when no salesforce_id', function() {
-    beforeEach(function (done) {
-      request.post({
-        url: 'http://localhost:9000/login',
-        json: { username: 'valid_signature', password: 'no_sf_id' }
-      }, function (err, resp, body) {
-        this.token = body.token;
-        done();
-      }.bind(this));
-    });
-
-    it('should emit unauthorized', function (done){
-      var socket = io.connect('http://localhost:9000', {
-        'forceNew':true,
-        'query': 'token=' + this.token
-      });
-
-      socket.on('error', function(err){
-        err.message.should.eql("Invalid Token");
-        err.code.should.eql("invalid_token");
-        socket.close();
-        done();
-      });
-    });
-  });
-
-  describe('user with client_id', function() {
-    beforeEach(function (done) {
-      request.post({
-        url: 'http://localhost:9000/login',
-        json: { username: 'valid_signature', password: 'client_id' }
-      }, function (err, resp, body) {
-        this.token = body.token;
-        done();
-      }.bind(this));
-    });
-
-    it('do handshake and connect', function (done){
-      var socket = io.connect('http://localhost:9000', {
-        'forceNew':true,
-        'query': 'token=' + this.token
-      });
-      socket.on('connect', function(){
-        socket.close();
-        done();
-      }).on('error', done);
-    });
-  });
-
-  describe('user with no client_id', function() {
-    beforeEach(function (done) {
-      request.post({
-        url: 'http://localhost:9000/login',
-        json: { username: 'valid_signature', password: 'no_client_id' }
-      }, function (err, resp, body) {
-        this.token = body.token;
-        done();
-      }.bind(this));
-    });
-
-    it('should emit unauthorized', function (done){
-      var socket = io.connect('http://localhost:9000', {
-        'forceNew':true,
-        'query': 'token=' + this.token
-      });
-
-      socket.on('error', function(err){
-        err.message.should.eql("Invalid Token");
-        err.code.should.eql("invalid_token");
-        socket.close();
-        done();
-      });
     });
   });
 
