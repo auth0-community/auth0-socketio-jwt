@@ -22,19 +22,18 @@
   },
   "license": "MIT",
   "dependencies": {
-    "jsonwebtoken": "^5.0.0",
-    "xtend": "~2.1.2"
+    "jsonwebtoken": "^8.3.0",
+    "xtend": "^4.0.1"
   },
   "devDependencies": {
-    "body-parser": "~1.13.3",
-    "express": "~4.10.6",
-    "mocha": "~1.17.0",
-    "passport-local": "~0.1.6",
-    "request": "~2.19.0",
+    "body-parser": "^1.18.3",
+    "express": "^4.16.3",
+    "mocha": "^5.2.0",
+    "request": "^2.88.0",
     "serve-static": "^1.7.1",
     "server-destroy": "~1.0.1",
-    "should": "~1.2.2",
-    "socket.io": "^1.0.4",
-    "socket.io-client": "^1.0.4"
+    "should": "^13.2.3",
+    "socket.io": "^2.1.1",
+    "socket.io-client": "^2.1.1"
   }
 }

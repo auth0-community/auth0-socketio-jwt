@@ -14,7 +14,7 @@ var enableDestroy = require('server-destroy');
 
 exports.start = function (options, callback) {
 
-  if(typeof options == 'function'){
+  if(typeof options === 'function'){
     callback = options;
     options = {};
   }
@@ -38,7 +38,7 @@ exports.start = function (options, callback) {
     };
 
     // We are sending the profile inside the token
-    var token = jwt.sign(profile, options.secret, { expiresInMinutes: 60*5 });
+    var token = jwt.sign(profile, options.secret, { expiresIn: 60*5 });
 
     res.json({token: token});
   });
