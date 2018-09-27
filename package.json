@@ -1,5 +1,5 @@
 {
-  "name": "socketio-jwt",
+  "name": "@ohanapediatrics/socketio-jwt",
   "version": "4.5.0",
   "description": "authenticate socket.io connections using JWTs",
   "main": "lib/index.js",
@@ -9,13 +9,13 @@
     "jwt"
   ],
   "author": {
-    "name": "José F. Romaniello",
-    "email": "jfromaniello@gmail.com",
-    "url": "http://joseoncode.com"
+    "name": "Dan Rumney",
+    "email": "dan.rumney@ohanapediatrics.com",
+    "url": "https://ohanapediatrics.com"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/auth0/socketio-jwt.git"
+    "url": "https://github.com/ohanapediatrics/socketio-jwt.git"
   },
   "scripts": {
     "test": "mocha"
