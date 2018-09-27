@@ -23,6 +23,7 @@
   "license": "MIT",
   "dependencies": {
     "jsonwebtoken": "^8.3.0",
+    "simple-get": "^3.0.3",
     "xtend": "^4.0.1"
   },
   "devDependencies": {

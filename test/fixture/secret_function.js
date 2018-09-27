@@ -18,7 +18,7 @@ exports.start = function (options, callback) {
     555: 'other'
   };
 
-  if(typeof options == 'function'){
+  if(typeof options === 'function'){
     callback = options;
     options = {};
   }
