@@ -31,7 +31,7 @@ describe('authorizer with JWKS url', function () {
 
   describe('when the kid does not match', function () {
 
-    it('should do the handshake and connect', function (done){
+    it('should throw an error', function (done){
       jwt.sign({}, privateKey,  {keyid: 'test_badkid', algorithm: 'RS256'}, (err, token) => {
         const socket = io.connect('http://localhost:9000', {
           'forceNew': true,
@@ -40,6 +40,24 @@ describe('authorizer with JWKS url', function () {
         socket.on('error', function(err){
           err.message.should.eql("no match found for kid");
           err.code.should.eql("jwks_error");
+          socket.close();
+          done();
+        });
+      });
+    });
+  });
+
+  describe('when the kid matches but key is bad', function () {
+
+    it('should throw an error', function (done){
+      jwt.sign({}, privateKey,  {keyid: 'test_kid_bad_key', algorithm: 'RS256'}, (err, token) => {
+        const socket = io.connect('http://localhost:9000', {
+          'forceNew': true,
+          'query': 'token=' + token
+        });
+        socket.on('error', function(err){
+          err.message.should.eql("invalid signature");
+          err.code.should.eql("invalid_token");
           socket.close();
           done();
         });

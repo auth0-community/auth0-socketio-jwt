@@ -54,6 +54,29 @@ exports.start = function (options, callback) {
           "e": "AQAB",
           "kid": "test_kid",
           "x5t": "test_kid"
+        },
+        {
+          "alg": "RS256",
+          "kty": "RSA",
+          "use": "sig",
+          "x5c": [
+            "MIICIjANBgkqhkiG9w0BAQEFAAOCAg8AMIICCgKCAgEAsf1xf4CdyR8rfTb1ePJm" +
+            "S76Y0fVmvr2tIk3OQhFh59OtBGPd12Zs2XsmJxbiKptyYIP7/Dd6DFV5ZloFuHor" +
+            "EOIQPfLcuAUV6pO21H1YN8U3JP7iRpRCHWgSg6Uvo9/Z68HW5sM+axw3czvCjRaD" +
+            "w/u8PrhleiFNiZmRGQRsU3+on43eMnvwNuV2l/3LIzbMhhStR1Vz2bivBQ/HEfch" +
+            "RNwTfxR8rCGJDfOtUbpDPOqT56GKBJ5Yv3adwFIWbHd+EoM3DzdeiTO4E+CCrh8K" +
+            "94OWV2lybjNUJYEzV2HyJaAc/H0u57lP1iabnA5B6L/ssAry0TWzt0tG42M0WojX" +
+            "VcBjCPhw9+0pv+T9O676gVDghCi6ZwQRcaI2SENLmi/lEkGeUXLQbkCuDpNPjDls" +
+            "h+nevnHn3jhuby6mK++XQweH1iROyBlvPl0cuH7ofhn7RYDRCRcZ8sl0c/gj0OHh" +
+            "R9zihcXZnKhO8mHZ7C7+yTs88bDfFUOaa6z5Cptvc5X/izcd1S8XLmrWrQHX3wbV" +
+            "yOLFUlLpOi97gkNTMMLbUQODhlWPgZcR3jwNeTvWJeT33m+rJZIzhzJtU/kwu6wp" +
+            "72SJqED6tfy1rwflAJ4pKgKX0w0NQyAbWt5BzhJ8WjQXPvOp5UXkwL4D0/1nNtYB" +
+            "J7Nd2Q88JxSGsTsGOAyZuRECAwEAAQ=="
+          ],
+          "n": "p_xUHnNOGXJoiA6kRESMglb1l3X484vCfAnOi7Ia9Gi9VHEMy9f4lWvsh-Ak3W_jhCA9WbxQN8ETvDtvpPYdmpBhgczsPwzdrlKRGthTfaQDlZSa6a4g-JQmH-xu6l8kp5ksgpz5C3ZmY1hXADDMLIkDhpApnFK9Tdgdv-UZxrUp9Ij3lGttjStQORYhhQAQwBVmj0qtgc4rjRJP7ENjLUmXbaYgSAVXCoIzcfPy-f6OoQjPQDHHcmFXdFbw8AL3mQ5Q6E5vRZkG5_qU7FQaRckW711WHuJSyjZWGBh1oosVv7UpvokFbuOmlXrcvARqx5amm6rBQaVdqY5f40p6Cw",
+          "e": "AQAB",
+          "kid": "test_kid_bad_key",
+          "x5t": "test_kid_bad_key"
         }
       ]
     });
