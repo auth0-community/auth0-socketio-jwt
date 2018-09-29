@@ -6,7 +6,6 @@ var socketio_jwt = require('../../lib');
 
 var jwt = require('jsonwebtoken');
 
-var xtend = require('xtend');
 var bodyParser = require('body-parser');
 
 var server, sio;

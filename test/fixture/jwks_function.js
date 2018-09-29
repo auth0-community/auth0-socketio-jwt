@@ -4,9 +4,6 @@ var http = require('http');
 var socketIo = require('socket.io');
 var socketio_jwt = require('../../lib');
 
-var jwt = require('jsonwebtoken');
-
-var xtend = require('xtend');
 var bodyParser = require('body-parser');
 
 var server, sio;
@@ -19,11 +16,12 @@ exports.start = function (options, callback) {
     options = {};
   }
 
-  options = xtend({
+  options = {
     jwks: 'http://localhost:9000/.well-known/jwks.json',
     timeout: 1000,
-    handshake: true
-  }, options);
+    handshake: true,
+      ...options
+  };
 
   var app = express();
 

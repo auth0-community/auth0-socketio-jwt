@@ -6,7 +6,6 @@ var socketio_jwt = require('../../lib');
 
 var jwt = require('jsonwebtoken');
 
-var xtend = require('xtend');
 var bodyParser = require('body-parser');
 
 var server, sio;
@@ -19,11 +18,11 @@ exports.start = function (options, callback) {
     options = {};
   }
 
-  options = xtend({
+  options = {
     secret: 'aaafoo super sercret',
     timeout: 1000,
-    handshake: true
-  }, options);
+    handshake: true,
+      ...options};
 
   var app = express();
 
