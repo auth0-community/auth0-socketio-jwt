@@ -18,7 +18,7 @@
     "url": "https://github.com/ohanapediatrics/socketio-jwt.git"
   },
   "scripts": {
-    "test": "mocha --exit"
+    "test": "nyc mocha --exit"
   },
   "license": "MIT",
   "dependencies": {
@@ -30,6 +30,7 @@
     "body-parser": "^1.18.3",
     "express": "^4.16.3",
     "mocha": "^5.2.0",
+    "nyc": "^13.0.1",
     "request": "^2.88.0",
     "serve-static": "^1.7.1",
     "server-destroy": "~1.0.1",
