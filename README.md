@@ -1,6 +1,4 @@
-# This library is no longer maintained/supported by Auth0
-
-[![Build Status](https://travis-ci.org/auth0/socketio-jwt.svg)](https://travis-ci.org/auth0/socketio-jwt)
+[![Build Status](https://travis-ci.org/ohana-pediatrics/socketio-jwt.svg?branch=master)](https://travis-ci.org/ohana-pediatrics/socketio-jwt)
 
 Authenticate socket.io incoming connections with JWTs. This is useful if you are build a single page application and you are not using cookies as explained in this blog post: [Cookies vs Tokens. Getting auth right with Angular.JS](http://blog.auth0.com/2014/01/07/angularjs-authentication-with-cookies-vs-token/).
 
@@ -139,7 +137,7 @@ To disconnect socket server-side without client-side callback:
 io.sockets.on('connection', socketioJwt.authorize({
   secret: 'secret goes here',
   // No client-side callback, terminate connection server-side
-  callback: false 
+  callback: false
 }))
 ```
 
@@ -155,7 +153,7 @@ To disconnect socket server-side while giving client-side 15 seconds to execute 
 io.sockets.on('connection', socketioJwt.authorize({
   secret: 'secret goes here',
   // Delay server-side socket disconnect to wait for client-side callback
-  callback: 15000 
+  callback: 15000
 }))
 ```
 
@@ -199,6 +197,21 @@ io.use(socketioJwt.authorize({
 
 ```
 
+## Using JWKS
+
+[JWKS](https://auth0.com/docs/jwks) is a specification that allows the publication
+of public keys for the verification of JWTs.
+
+To validate JWTs using JWKS, set the `jwks` option to the URL of the
+JWKS file:
+
+```
+io.use(socketioJwt.authorize({
+  jwks: 'https://example.com/.well-known/jwks.json',
+  handshake: true
+}));
+```
+
 ## Contribute
 
 You are always welcome to open an issue or provide a pull-request!
@@ -214,7 +227,7 @@ If you have found a bug or if you have a feature request, please report them at 
 
 ## Author
 
-[Auth0](auth0.com)
+[Dan Rumney](dancrumb.com)
 
 ## License
 
