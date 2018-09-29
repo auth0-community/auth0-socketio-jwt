@@ -10,3 +10,9 @@ before_script:
   - ./cc-test-reporter before-build
 after_script:
   - ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT
+deploy:
+  provider: npm
+  email: "dan.rumney@ohanapediatrics.com"
+  api_key: $OHANA_NPM
+  on:
+    tags: true

@@ -20,6 +20,9 @@
   "scripts": {
     "test": "nyc mocha --exit"
   },
+  "publishConfig": {
+    "access": "public"
+  },
   "license": "MIT",
   "engines": {
     "node": ">= 8.9.4"
