@@ -71,22 +71,4 @@ describe('authorizer', function () {
     });
   });
 
-  describe('no token', function() {
-
-    it('should not do the handshake and connect', function (done){
-      var socket = io.connect('http://localhost:9000', {
-        'forceNew':true,
-      });
-      socket.on('connect', function () {
-        socket.close();
-        done(new Error('this shouldnt happen'));
-      }).on('error', function (err) {
-        socket.close();
-        err.message.should.eql("jwt must be provided");
-        err.code.should.eql("invalid_token");
-        done();
-      });
-    });
-  });
-
 });
