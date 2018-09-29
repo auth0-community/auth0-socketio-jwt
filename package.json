@@ -21,10 +21,15 @@
     "test": "nyc mocha --exit"
   },
   "license": "MIT",
+  "engines": {
+    "node": ">= 8.9.4"
+  },
   "dependencies": {
     "jsonwebtoken": "^8.3.0",
-    "simple-get": "^3.0.3",
-    "xtend": "^4.0.1"
+    "simple-get": "^3.0.3"
+  },
+  "peerDependencies": {
+    "socket.io": "^2.1.1"
   },
   "devDependencies": {
     "body-parser": "^1.18.3",
