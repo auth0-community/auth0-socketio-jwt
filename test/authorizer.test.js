@@ -50,7 +50,7 @@ describe('authorizer', function () {
     });
   });
 
-  describe('unsgined token', function() {
+  describe('unsigned token', function() {
     beforeEach(function () {
       this.token = 'eyJhbGciOiJub25lIiwiY3R5IjoiSldUIn0.eyJuYW1lIjoiSm9obiBGb28ifQ.';
     });
@@ -66,6 +66,24 @@ describe('authorizer', function () {
       }).on('error', function (err) {
         socket.close();
         err.message.should.eql("jwt signature is required");
+        done();
+      });
+    });
+  });
+
+  describe('no token', function() {
+
+    it('should not do the handshake and connect', function (done){
+      var socket = io.connect('http://localhost:9000', {
+        'forceNew':true,
+      });
+      socket.on('connect', function () {
+        socket.close();
+        done(new Error('this shouldnt happen'));
+      }).on('error', function (err) {
+        socket.close();
+        err.message.should.eql("jwt must be provided");
+        err.code.should.eql("invalid_token");
         done();
       });
     });
