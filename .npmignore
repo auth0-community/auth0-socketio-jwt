@@ -5,3 +5,4 @@
 .npmignore
 .travis.yml
 .idea
+/coverage
