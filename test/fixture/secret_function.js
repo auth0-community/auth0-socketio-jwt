@@ -6,7 +6,6 @@ var socketio_jwt = require('../../lib');
 
 var jwt = require('jsonwebtoken');
 
-var xtend = require('xtend');
 var bodyParser = require('body-parser');
 
 var server, sio;
@@ -18,18 +17,19 @@ exports.start = function (options, callback) {
     555: 'other'
   };
 
-  if(typeof options == 'function'){
+  if (typeof options === 'function') {
     callback = options;
     options = {};
   }
 
-  options = xtend({
-    secret: function(request, decodedToken, callback) {
+  options = {
+    secret: function (request, decodedToken, callback) {
       callback(null, SECRETS[decodedToken.id]);
     },
     timeout: 1000,
-    handshake: true
-  }, options);
+    handshake: true,
+    ...options
+  };
 
   var app = express();
 
@@ -44,7 +44,7 @@ exports.start = function (options, callback) {
     };
 
     // We are sending the profile inside the token
-    var token = jwt.sign(profile, SECRETS[123], { expiresIn: 60*60*5 });
+    var token = jwt.sign(profile, SECRETS[123], {expiresIn: 60 * 60 * 5});
 
     res.json({token: token});
   });
@@ -82,7 +82,8 @@ exports.stop = function (callback) {
   sio.close();
   try {
     server.destroy();
-  } catch (er) {}
+  } catch (er) {
+  }
 
   callback();
 };

@@ -1,5 +1,19 @@
 language: node_js
 node_js:
-  - "0.12"
-  - "0.11"
-  - "0.10"
+  - "8.9.4"
+  - "9.11.1"
+  - "10.3.0"
+  - "10.5.0"
+before_script:
+  - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
+  - chmod +x ./cc-test-reporter
+  - ./cc-test-reporter before-build
+after_script:
+  - nyc report --reporter=lcov
+  - ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT
+deploy:
+  provider: npm
+  email: "dan.rumney@ohanapediatrics.com"
+  api_key: $OHANA_NPM
+  on:
+    tags: true
