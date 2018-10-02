@@ -50,7 +50,7 @@ describe('authorizer', function () {
     });
   });
 
-  describe('unsgined token', function() {
+  describe('unsigned token', function() {
     beforeEach(function () {
       this.token = 'eyJhbGciOiJub25lIiwiY3R5IjoiSldUIn0.eyJuYW1lIjoiSm9obiBGb28ifQ.';
     });

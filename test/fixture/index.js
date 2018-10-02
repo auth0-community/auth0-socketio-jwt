@@ -6,7 +6,6 @@ var socketio_jwt = require('../../lib');
 
 var jwt = require('jsonwebtoken');
 
-var xtend = require('xtend');
 var bodyParser = require('body-parser');
 
 var server, sio;
@@ -14,16 +13,16 @@ var enableDestroy = require('server-destroy');
 
 exports.start = function (options, callback) {
 
-  if(typeof options == 'function'){
+  if(typeof options === 'function'){
     callback = options;
     options = {};
   }
 
-  options = xtend({
+  options = {
     secret: 'aaafoo super sercret',
     timeout: 1000,
-    handshake: true
-  }, options);
+    handshake: true,
+      ...options};
 
   var app = express();
 
@@ -38,7 +37,7 @@ exports.start = function (options, callback) {
     };
 
     // We are sending the profile inside the token
-    var token = jwt.sign(profile, options.secret, { expiresInMinutes: 60*5 });
+    var token = jwt.sign(profile, options.secret, { expiresIn: 60*5 });
 
     res.json({token: token});
   });
