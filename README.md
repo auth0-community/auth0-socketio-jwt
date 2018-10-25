@@ -2,7 +2,7 @@
 
 [![Build Status](https://travis-ci.org/auth0/socketio-jwt.svg)](https://travis-ci.org/auth0/socketio-jwt)
 
-Authenticate socket.io incoming connections with JWTs. This is useful if you are build a single page application and you are not using cookies as explained in this blog post: [Cookies vs Tokens. Getting auth right with Angular.JS](http://blog.auth0.com/2014/01/07/angularjs-authentication-with-cookies-vs-token/).
+Authenticate socket.io incoming connections with JWTs. This is useful if you are building a single page application and you are not using cookies as explained in this blog post: [Cookies vs Tokens. Getting auth right with Angular.JS](http://blog.auth0.com/2014/01/07/angularjs-authentication-with-cookies-vs-token/).
 
 ## Installation
 
@@ -139,7 +139,7 @@ To disconnect socket server-side without client-side callback:
 io.sockets.on('connection', socketioJwt.authorize({
   secret: 'secret goes here',
   // No client-side callback, terminate connection server-side
-  callback: false 
+  callback: false
 }))
 ```
 
@@ -155,7 +155,7 @@ To disconnect socket server-side while giving client-side 15 seconds to execute 
 io.sockets.on('connection', socketioJwt.authorize({
   secret: 'secret goes here',
   // Delay server-side socket disconnect to wait for client-side callback
-  callback: 15000 
+  callback: 15000
 }))
 ```
 
@@ -174,7 +174,7 @@ socket.on("unauthorized", function(error, callback) {
 ```
 
 ## Getting the secret dynamically
-You can pass a function instead of an string when configuring secret.
+You can pass a function instead of a string when configuring secret.
 This function receives the request, the decoded token and a callback. This
 way, you are allowed to use a different secret based on the request and / or
 the provided token.
