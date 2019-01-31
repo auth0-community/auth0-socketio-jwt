@@ -39,7 +39,7 @@ exports.start = function (callback) {
     };
 
     // We are sending the profile inside the token
-    var token = jwt.sign(profile, options.secret, { expiresInMinutes: 60*5 });
+    var token = jwt.sign(profile, options.secret, { expiresIn: 60*5*60 });
 
     res.json({token: token});
   });

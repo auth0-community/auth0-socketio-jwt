@@ -22,7 +22,7 @@
   },
   "license": "MIT",
   "dependencies": {
-    "jsonwebtoken": "^5.0.0",
+    "jsonwebtoken": "^8.0.0",
     "xtend": "~2.1.2"
   },
   "devDependencies": {
@@ -30,9 +30,9 @@
     "express": "~4.10.6",
     "mocha": "~1.17.0",
     "passport-local": "~0.1.6",
-    "q": "^1.4.1",
+    "q": "^1.5.1",
     "request": "~2.19.0",
-    "serve-static": "^1.7.1",
+    "serve-static": "^1.13.2",
     "server-destroy": "~1.0.1",
     "should": "~1.2.2",
     "socket.io": "^1.0.4",
