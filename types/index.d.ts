@@ -31,7 +31,7 @@ declare module 'socketio-jwt' {
     customDecoded?: (decoded: object) => object;
 
     callback?: (false | number);
-    secret: (string | ((request: any, decodedToken: object, callback: ISocketCallback) => void));
+    secret: (string | ((request: any, decodedToken: object, callback: ISocketCallback) => void) | ((request: any, header: object, payload: object, callback: ISocketCallback) => void));
 
     encodedPropertyName?: string;
     decodedPropertyName?: string;
