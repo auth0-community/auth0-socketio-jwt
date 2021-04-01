@@ -27,13 +27,14 @@
     "xtend": "~2.1.2"
   },
   "devDependencies": {
+    "@types/jsonwebtoken": "^8.5.0",
     "@types/socket.io": "~1.4.29",
     "body-parser": "~1.17.1",
     "express": "~4.15.2",
     "mocha": "~3.2.0",
+    "q": "^1.5.1",
     "request": "~2.81.0",
     "serve-static": "^1.13.2",
-    "q": "^1.5.1",
     "server-destroy": "~1.0.1",
     "should": "~11.2.1",
     "socket.io": "^1.7.3",

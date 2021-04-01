@@ -255,6 +255,17 @@ io.use(socketioJwt.authorize({
 }));
 ```
 
+```javascript
+io.use(socketioJwt.authorize({
+  secret: JwksRsa.expressJwtSecret({
+    cache: true,
+    rateLimit: true,
+    jwksRequestsPerMinute: 5,
+    jwksUri: `https://REDACTED/.well-known/jwks.json`,
+  })
+}));
+```
+
 ### Altering the value of the decoded token
 
 You can pass a function to change the value of the decoded token

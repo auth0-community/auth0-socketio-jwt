@@ -1,8 +1,8 @@
-const fixture = require('./fixture/secret_function');
+const fixture = require('./fixture/secret_function_arity4');
 const request = require('request');
 const io = require('socket.io-client');
 
-describe('authorizer with secret function', () => {
+describe('authorizer with secret function (arity 4)', () => {
 
   //start and stop the server
   before((done) => {
